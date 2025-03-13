@@ -11,7 +11,7 @@ using namespace std;
 int main () {
 	string user;
 	while (cin) {
-		cout << "Whoo's program would you like to run? (Type 'done' to quit)\nChoices: Mohammad, Michael, Duran, or Raj\n";
+		cout << "Who's program would you like to run? (Type 'done' to quit)\nChoices: Mohammad, Michael, Duran, or Raj\n";
 		cin >> user;
 		if (user == "Mohammad" or user == "mohammad") {
 			mohammad();
