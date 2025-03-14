@@ -10,6 +10,6 @@ Michael:
 I'll work on part A
 
 Raj:
-
+I will work on part B
 
 Duran:
