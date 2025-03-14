@@ -13,3 +13,4 @@ Raj:
 I will work on part B
 
 Duran:
+I'll take part D
