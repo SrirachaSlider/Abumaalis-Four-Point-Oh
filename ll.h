@@ -1,4 +1,5 @@
 #pragma once
+//this is Michael's section (Part A on Milestone 1)
 
 class LL {
 	double x, y;
