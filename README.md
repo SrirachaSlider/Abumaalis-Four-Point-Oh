@@ -7,7 +7,7 @@ Mohammad:
 I will work on part C
 
 Michael:
-
+I'll work on part A
 
 Raj:
 
