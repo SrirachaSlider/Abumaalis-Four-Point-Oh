@@ -9,3 +9,4 @@ int x,y ;
 int VelocityX, velocityY;
 int lifetime;
 MovementType type;
+}
