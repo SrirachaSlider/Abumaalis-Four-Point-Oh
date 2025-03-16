@@ -2,8 +2,6 @@
 #pragma once
 #include "particle.h"
 
-//class Particle; //Added to prevent errors. Will this be part B?
-
 struct Cell {
 	Particle* newParticle;
 	Cell* next;
