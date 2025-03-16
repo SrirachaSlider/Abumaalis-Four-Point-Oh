@@ -1,12 +1,13 @@
 #pragma once
 //this is Michael's section (Part A on Milestone 1)
 
-class LL {
-	double x, y;
-	public:
-	LL () {
-		x = 0;
-		y = 0;
-	}
-	LL (double newX, double newY) : x(newX), y(newY) { }
+class Particle; //Added to prevent errors. Will this be part B?
+
+struct Cell {
+	Particle* newParticle;
+	Cell* next;
+	Cell* prev;
+
+	Cell(Particle* p = nullptr, Cell* newNext = nullptr, Cell* newPrev = nullptr)
+		: newParticle(p), next(newNext), prev(newPrev) { }
 };
