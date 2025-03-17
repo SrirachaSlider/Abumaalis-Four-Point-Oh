@@ -15,3 +15,5 @@ class particleGraphics {
 			return particle;
 		}
 };
+
+// make something with a DrawPoint() as a start!!!
