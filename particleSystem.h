@@ -3,7 +3,6 @@
 #include <iostream>
 #include "ll.h"
 #include "particle.h"
-using namespace std;
 
 class ParticleSystem {
 	Cell *head = nullptr;
