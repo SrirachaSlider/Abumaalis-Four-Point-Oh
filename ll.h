@@ -3,10 +3,10 @@
 #include "particle.h"
 
 struct Cell {
-	Particle* newParticle;
+	Particle newParticle;
 	Cell* next;
 	Cell* prev;
 
-	Cell(Particle* p = nullptr, Cell* newNext = nullptr, Cell* newPrev = nullptr)
+	Cell(Particle p, Cell* newNext = nullptr, Cell* newPrev = nullptr)
 		: newParticle(p), next(newNext), prev(newPrev) { }
 };

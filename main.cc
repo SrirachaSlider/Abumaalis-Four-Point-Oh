@@ -5,6 +5,7 @@
 #include "michael.h"
 #include "duran.h"
 #include "raj.h"
+#include "test.h"
 
 using namespace std;
 
@@ -24,6 +25,9 @@ int main () {
 		}
 		else if (user == "Raj" or user == "raj") {
 			raj();
+		}
+		else if (user == "test") {
+			test();
 		}
 		else if (user == "done" or user == "Done") break;
 		else {

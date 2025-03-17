@@ -25,22 +25,20 @@ class ParticleSystem {
 	int sizeRows = 0; //havent learned how to actually get size yet, will fix later
 	int numParticles() {return size;}
 
-	void addParticle() {
-		Cell* temp = new Cell();
+	void addParticle(Particle p) {
+		Cell* temp = new Cell(p);
 		temp->next = head;
 		if (head) head->prev = temp;
 		head = temp;
 		size++;
 	}
 
-	auto moveParticles() {
-		//dont know return type yet
+	void moveParticles() {
 		//stub for now
 		return;
 	}
 
-	auto drawParticles() {
-		//dont know return type yet
+	void drawParticles() {
 		//stub for now
 		return;
 	}
