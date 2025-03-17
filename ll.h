@@ -3,10 +3,14 @@
 #include "particle.h"
 
 struct Cell {
-	Particle newParticle;
+	//changed this to data for better accuracy
+	Particle data;
 	Cell* next;
 	Cell* prev;
 
 	Cell(Particle p, Cell* newNext = nullptr, Cell* newPrev = nullptr)
-		: newParticle(p), next(newNext), prev(newPrev) { }
+		: data(p), next(newNext), prev(newPrev) { }
+
+	//adding this purely for test.cc so i can show that the linked list of particles is working
+	Particle& get_data() {return data;}
 };

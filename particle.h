@@ -9,7 +9,7 @@ double velocityX, velocityY;
 double lifetime;
 std::string movementType; // STREAMER , BALLISTIC, FIREWORK
 
-Particle(double x, double y, double vx, double vy, double life, std::string type)
+Particle(double x = 0, double y = 0, double vx = 0, double vy = 0, double life = 0, std::string type = "initial")
 : positionX(x),positionY(y), velocityX(vx), velocityY(vy), lifetime(life), movementType(type){}
 
 void physics(){
