@@ -26,7 +26,7 @@ class ParticleSystem {
 	int numParticles() {return size;}
 
 	void addParticle() {
-		Cell* temp = new Cell;
+		Cell* temp = new Cell();
 		temp->next = head;
 		if (head) head->prev = temp;
 		head = temp;

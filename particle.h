@@ -4,12 +4,12 @@
 
 class Particle {
 public:
-int positionX, positionY;
-int velocityX, velocityY;
-int lifetime;
+double positionX, positionY;
+double velocityX, velocityY;
+double lifetime;
 std::string movementType; // STREAMER , BALLISTIC, FIREWORK
 
-Particle(int x, int y, int vx, int vy, int life, std::string type)
+Particle(double x, double y, double vx, double vy, double life, std::string type)
 : positionX(x),positionY(y), velocityX(vx), velocityY(vy), lifetime(life), movementType(type){}
 
 void physics(){
