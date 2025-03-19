@@ -35,6 +35,8 @@ public:
 
 	int get_cols() {return cols;}
 
+	//getters here but not needed bec variables are public
+
 	/*auto termSize = get_terminal_size();
 	int rows = size[0];
 	int cols = size[1];*/
