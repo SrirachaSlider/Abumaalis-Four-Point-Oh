@@ -1,19 +1,22 @@
 //This is Duran's section (Part D on Milestone 1)
 #pragma once
+#include <string>
+using namespace std;
 
 class particleGraphics {
-	double particle;
+	string color;
 
 	public:
 		particleGraphics(){
 			//Write smth here later
 		}
-		void setParticle(int p){
-			particle = p;
+		void set_color(string c){
+			color = c;
 		}
-		int getParticle() {
-			return particle;
+		string get_color() {
+			return color;
+		}
+		void drawPoint() {
 		}
 };
-
-// make something with a DrawPoint() as a start!!!
+		
