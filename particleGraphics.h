@@ -21,5 +21,17 @@ class particleGraphics {
 		movecursor(myRow,myCol);
 		cout << " ";
 		}
+		void drawRectangle(int myRow, int myCol) {
+		// add to this!
+		}
+		void drawOval(int myRow, int myCol) {
+		// add to this!
+		}
+		void drawPolygon(int myRow, int myCol) {
+		// add to this!
+		}
+		void drawLine(int myRow, int myCol) {
+		// add to this!
+		}
 };
 		
