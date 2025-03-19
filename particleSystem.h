@@ -17,8 +17,8 @@ public:
 	int cols;
 	ParticleSystem() {
 		const auto [rowsSize,colsSize] = get_terminal_size();
-		rows = rowsSize;
-		cols = colsSize;
+		rows = rowsSize - 1;
+		cols = colsSize - 1;
 	}
 	~ParticleSystem() {
 		Cell* temp = head;
