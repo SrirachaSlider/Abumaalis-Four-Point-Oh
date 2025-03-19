@@ -9,6 +9,7 @@ using namespace std;
 
 void duran() {
 	particleGraphics test;
+	clearscreen();
 	cout << RED;
 	test.drawPoint(10,10);
 	resetcolor();
