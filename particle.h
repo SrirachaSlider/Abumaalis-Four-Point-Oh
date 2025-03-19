@@ -1,4 +1,5 @@
 //this is Raj's section (Part B on Milestone 1)
+#include <string>
 #include <cstring>
 #include <iostream>
 
