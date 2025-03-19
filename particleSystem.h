@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <cassert>
+#include "particleGraphics.h"
 
 class ParticleSystem {
 	Cell *head = nullptr;
@@ -29,6 +30,7 @@ public:
 		}
 		head = nullptr;
 		tail = nullptr;
+		size = 0;
 	}
 
 	//getters here but not needed bec variables are public
@@ -64,19 +66,27 @@ public:
 	}
 
 	void moveParticles() {
-		//stub for now
-		return;
+		for (Cell* current = head; current; current = current->next) {
+			current->data.physics();
+			current = current->next;
+		}
 	}
+//  ---Need drawPoint done for this to work---
+	void drawParticles(particleGraphics& graphics) {
+		for (Cell* current = head; current; current = current->next) {
+			int x = static_cast<int>(current->data.positionX);
+			int y = static_cast<int>(current->data.positionY);
 
-	void drawParticles() {
-		//stub for now
-		return;
+			if (x >= 0 and x < cols and y >= 0 and y < rows)
+				graphics.drawPoint(y, x);
+			current = current->next;
+		}
 	}
 
 	void drawShape() {
 		//stub for now, this is for drawing shapes like rectangle of a window
 		return;
 	}
-
+	
 
 };
