@@ -14,8 +14,8 @@ class ParticleSystem {
 	Cell *tail = nullptr; 
 	int size = 0;
 public:
-	int rows;
-	int cols;
+	int rows = 0;
+	int cols = 0;
 	ParticleSystem() {
 		const auto [rowsSize,colsSize] = get_terminal_size();
 		rows = rowsSize - 1;
