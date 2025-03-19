@@ -16,7 +16,7 @@ class particleGraphics {
 		string get_color() {
 			return color;
 		}
-		void drawPoint() {
+		void drawPoint(int myRow, int myCol) {
 		}
 };
 		
