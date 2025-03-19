@@ -12,13 +12,13 @@ class ParticleSystem {
 	Cell *head = nullptr;
 	Cell *tail = nullptr; 
 	int size = 0;
-	int rowsSize;
-	int colsSize;
-	public:
+public:
+	int rows;
+	int cols;
 	ParticleSystem() {
-		const auto [rows,cols] = get_terminal_size();
-		rowsSize = rows;
-		colsSize = cols;
+		const auto [rowsSize,colsSize] = get_terminal_size();
+		rows = rowsSize;
+		cols = colsSize;
 	}
 	~ParticleSystem() {
 		Cell* temp = head;
@@ -31,9 +31,9 @@ class ParticleSystem {
 		tail = nullptr;
 	}
 
-	int get_rows() {return rowsSize;}
+	int get_rows() {return rows;}
 
-	int get_cols() {return colsSize;}
+	int get_cols() {return cols;}
 
 	/*auto termSize = get_terminal_size();
 	int rows = size[0];

@@ -49,7 +49,7 @@ void test() {
 			mySystem.drawParticles();
 			mySystem.drawShape();
 		}
-		//else if (choice == 7) cout << mySystem.get_rows() << mySystem.get_cols();
+		else if (choice == 7) cout << mySystem.get_rows() << mySystem.get_cols();
 		else cout << "Invalid input, try again\n";
 	}
 	
