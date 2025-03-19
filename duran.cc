@@ -4,8 +4,12 @@
 #include "particle.h"
 #include "particleSystem.h"
 #include "particleGraphics.h"
+#include "/public/colors.h"
 using namespace std;
 
 void duran() {
-	cout << "This is Duran's portion\n";
+	particleGraphics test;
+	cout << RED;
+	test.drawPoint(10,10);
+	resetcolor();
 }
