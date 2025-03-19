@@ -17,6 +17,9 @@ class particleGraphics {
 			return color;
 		}
 		void drawPoint(int myRow, int myCol) {
+		resetcolor();
+		movecursor(myRow,myCol);
+		cout << " ";
 		}
 };
 		
