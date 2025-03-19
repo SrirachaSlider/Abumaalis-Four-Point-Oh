@@ -31,13 +31,9 @@ public:
 		tail = nullptr;
 	}
 
-	//getters here but not needed bec variables are public
-
 	int get_rows() {return rows;}
 
 	int get_cols() {return cols;}
-
-	//getters here but not needed bec variables are public
 
 	/*auto termSize = get_terminal_size();
 	int rows = size[0];
