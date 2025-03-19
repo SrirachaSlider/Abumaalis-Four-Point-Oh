@@ -45,9 +45,9 @@ void test() {
 		else if (choice == 5) cout << "The number of particles in the system is: " << mySystem.numParticles() << endl;
 		else if (choice == 6) {
 			cout << "This just calls moveParticles(), drawParticles(), and drawShape(), they are all currently stub functions, but this shows that they are able to be called\n";
-			mySystem.moveParticles();
-			mySystem.drawParticles();
-			mySystem.drawShape();
+			//mySystem.moveParticles();
+			//mySystem.drawParticles();
+			//mySystem.drawShape();
 		}
 		else if (choice == 7) cout << mySystem.get_rows() << mySystem.get_cols();
 		else cout << "Invalid input, try again\n";
