@@ -9,7 +9,7 @@ using namespace std;
 void mohammad() {
 	cout << "This is Mohammad's portion\n";
 	int x = 0;
-	cout << "Enter a number to square\n";
+	cout << "Enter a number to square:\n";
 	cin >> x;
 	cout << x << " squared is: " << x * x << endl;
 }
