@@ -11,5 +11,5 @@ void mohammad() {
 	int x = 0;
 	cout << "Enter a number to square\n";
 	cin >> x;
-	cout << x << " doubled is: " << x * x << endl;
+	cout << x << " squared is: " << x * x << endl;
 }

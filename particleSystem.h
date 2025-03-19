@@ -3,14 +3,23 @@
 #include <iostream>
 #include "ll.h"
 #include "particle.h"
+#include "/public/colors.h"
+#include <cstdlib>
+#include <ctime>
+#include <cassert>
 
 class ParticleSystem {
 	Cell *head = nullptr;
 	Cell *tail = nullptr; 
 	int size = 0;
+	int rowsSize;
+	int colsSize;
 	public:
-	//not sure if supposed to be constructor and or deconstructor, but its here for now, will remove later if necessary
-	ParticleSystem() {}
+	ParticleSystem() {
+		const auto [rows,cols] = get_terminal_size();
+		rowsSize = rows;
+		colsSize = cols;
+	}
 	~ParticleSystem() {
 		Cell* temp = head;
 		while (temp) {
@@ -22,8 +31,13 @@ class ParticleSystem {
 		tail = nullptr;
 	}
 
-	int sizeColumns = 0; //havent learned how to actually get size yet, will fix later
-	int sizeRows = 0; //havent learned how to actually get size yet, will fix later
+	int get_rows() {return rowsSize;}
+
+	int get_cols() {return colsSize;}
+
+	/*auto termSize = get_terminal_size();
+	int rows = size[0];
+	int cols = size[1];*/
 	int numParticles() {return size;}
 
 	void addParticle(Particle p) {
@@ -61,5 +75,6 @@ class ParticleSystem {
 		//stub for now, this is for drawing shapes like rectangle of a window
 		return;
 	}
+
 
 };
