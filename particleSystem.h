@@ -50,9 +50,9 @@ public:
 			head = tail = temp;
 		}
 		else {
-			temp->next = head;
-			if (head) head->prev = temp;
-			head = temp;
+			temp->prev = tail;
+			if (tail) tail->next = temp;
+			tail = temp;
 		}
 		size++;
 	}
