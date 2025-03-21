@@ -92,7 +92,8 @@ public:
 		}
 	}
 
-	void drawParticles(particleGraphics graphics) {
+	void drawParticles() {
+		particleGraphics graphics;
 		for (Cell* current = head; current; current = current->next) {
 			double x = current->data.positionX;
 			double y = current->data.positionY;
