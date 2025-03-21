@@ -68,18 +68,37 @@ public:
 	void moveParticles() {
 		for (Cell* current = head; current; current = current->next) {
 			current->data.physics();
-			current = current->next;
+			
+			if (current->data.positionX < 0 or current->data.positionX >= cols or
+				current->data.positionY < 0 or current->data.positionY >= rows or
+				current->data.lifetime <= 0) {
+				
+				Cell* temp = current;
+
+				if (temp->prev)
+					temp->prev->next = temp->next;
+				if (temp->next)
+					temp->next->prev = temp->prev;
+				if (temp == head)
+					head = temp->next;
+				if (temp == tail)
+					tail = temp->prev;
+
+				delete temp;
+				size--;
+			} else {
+				current = current->next;
+			}
 		}
 	}
-//  ---Need drawPoint done for this to work---
-	void drawParticles(particleGraphics& graphics) {
+
+	void drawParticles(particleGraphics graphics) {
 		for (Cell* current = head; current; current = current->next) {
-			int x = static_cast<int>(current->data.positionX);
-			int y = static_cast<int>(current->data.positionY);
+			double x = current->data.positionX;
+			double y = current->data.positionY;
 
 			if (x >= 0 and x < cols and y >= 0 and y < rows)
 				graphics.drawPoint(y, x);
-			current = current->next;
 		}
 	}
 
