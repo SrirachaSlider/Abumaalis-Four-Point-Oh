@@ -9,34 +9,49 @@ using namespace std;
 
 class particleGraphics {
 	string color;
+	int r = 0, g = 0, b = 0;
 
 	public:
 		particleGraphics(){
-			//Write smth here later
+		r = rand() % 255;
+		g = rand() % 255;
+		b = rand() % 255;
+		//auto [myRows, myCols] = get_terminal_size();
+		//int rows = myRows -1;
+		//int cols = myCols -1;
 		}
-		void set_color(string c){
+		/*void set_color(string c){
 			color = c;
 		}
 		string get_color() {
 			return color;
-		}
+		}*/
 		void drawPoint(int myRow, int myCol) {
 		resetcolor();
 		movecursor(myRow,myCol);
+		setbgcolor(r,g,b);
+		//setcolor(255,0,0);
 		clearscreen();
 		cout << " ";
 		cout.flush();
 		}
-		void drawRectangle(int myRow, int myCol) {
+		void drawRectangle(int x_one, int x_two, int y_one, int y_two) {
+		assert(x_one < x_two);
+		assert(y_one < y_two);
+		resetcolor();
+		setbgcolor(r,g,b);
+		for (int row = x_one; row <= x_two; row++) {
+			for (int col = y_one; row <= y_two; col++) {
+				movecursor(row,col);
+				cout << " ";
+				}
+			}
+		cout.flush();
+		}
+		void drawVertLine(int y_one, int y_two, int x) {
 		// add to this!
 		}
-		void drawOval(int myRow, int myCol) {
-		// add to this!
-		}
-		void drawPolygon(int myRow, int myCol) {
-		// add to this!
-		}
-		void drawLine(int myRow, int myCol) {
+		void drawHorizLine(int x_one, int x_two, int y) {
 		// add to this!
 		}
 };
