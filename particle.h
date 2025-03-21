@@ -1,52 +1,59 @@
 //this is Raj's section (Part B on Milestone 1)
 #pragma once
+#include <iostream>
 #include <string>
 #include <cstring>
-#include <iostream>
-//gfksdsbk
+#include <cmath>
+using namespace std;
+
+
 class Particle {
 	public:
 		double positionX, positionY;
 		double velocityX, velocityY;
 		double lifetime;
-		char MovementType[20]; // STREAMER , BALLISTIC, FIREWORK
-
-		Particle(double x = 0, double y = 0,double vx = 0,double vy = 0,double life = 0, const char* type = "initial")
-			: positionX(x),positionY(y), velocityX(vx), velocityY(vy), lifetime(life) {
-				setMovementType(type);
+		string MovementType; // STREAMER , BALLISTIC, FIREWORK
+		// Constructor
+		Particle(double x = 0, double y = 0,double vx = 0,double vy = 0,double life = 0, string type  = "empty")
+			: positionX(x),positionY(y), velocityX(vx), velocityY(vy), lifetime(life), MovementType(type){
 			}
-
-		//function to set particle
-		void setParticle( double x, double y, double vx, double vy, double life, const std:: string& type) {
-			positionX = x;
-			positionY = y;
-			positionX = vx;
-			positionY = vy;
-			lifetime = life;
-			setMovementType(type.c_str());
-		}
 		// To set movement type
 
-		void setMovementType(const char* type){
+		/*void setMovementType(const char* type){
 			strncpy(MovementType, type, sizeof(MovementType) -1);
 			MovementType[sizeof(MovementType) -1] ='\0';
+		}*/
+
+		void physics() {
+    // Basic physics logic
+    positionX += velocityX;
+    positionY += velocityY;
+
+    if (MovementType == "BALLISTIC") {
+        velocityY += 1.0;
+    } else if (MovementType == "FIREWORK") {
+        if (lifetime <= 0) {
+			explode();
+		}
+	}
+	else if (MovementType == "STREAMER"){
+	}
+	lifetime -=1;
 		}
 
-		void physics(){
-			// use physics logic on movement
-			positionX += velocityX;
-			positionY += velocityY;
-
-			if(strcmp(MovementType, "BALLISTIC") ==0) {
-				velocityY += 1.0;
-			}else if(strcmp(MovementType,"FIREWORK") ==0){
-				if (lifetime <=0){
-					std::cout << "Particle exploded into streamers\n";
-				}
+		void explode(){
+			cout << "Firework exploded into 8 streamers!\n";
+			const int numParticles = 8;
+			for (int i = 0; i< numParticles; ++i){
+				double angle = i * 45.0 * (3.14159265 / 180.0);
+				double speed = 5.0;
+				double vx = cos(angle) * speed;
+				double vy = sin(angle) * speed;
+				Particle streamer(positionX, positionY,vx, vy, 30, "STREAMER");
+				streamer.draw();
 			}
-
-			lifetime -=1; // Decrease lifetime
 		}
+
 		void draw() const {
 			std::cout << "Drawing particle at ( " << positionX << "," << positionY << ") of type " << MovementType << "\n";
 		}
@@ -59,3 +66,4 @@ class Particle {
 			std::cout << "Movement Type:" << MovementType << "\n";
 		}
 };
+
