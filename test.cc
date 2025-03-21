@@ -17,10 +17,10 @@ void test() {
 		cin >> choice;
 		if (choice == 0) break;
 		else if (choice == 1) {
-			cout << "Insert a number to associate with the particle you are adding (will be added to head of linked list)\n";
-			double ins;
-			cin >> ins;
-			Particle p(ins);
+			cout << "Insert numbers for the x and y position for the particle you are adding (will be added to tail of linked list)\n";
+			double x = -1, y = -1;
+			cin >> x >> y;
+			Particle p(x, y);
 			mySystem.addParticle(p);
 			cout << "Particle added" << endl;
 		}
