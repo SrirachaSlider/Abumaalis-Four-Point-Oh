@@ -1,6 +1,10 @@
 //This is Duran's section (Part D on Milestone 1)
 #pragma once
 #include <string>
+#include "/public/colors.h"
+#include <cstdlib>
+#include <ctime>
+#include <cassert>
 using namespace std;
 
 class particleGraphics {
@@ -19,7 +23,9 @@ class particleGraphics {
 		void drawPoint(int myRow, int myCol) {
 		resetcolor();
 		movecursor(myRow,myCol);
+		clearscreen();
 		cout << " ";
+		cout.flush();
 		}
 		void drawRectangle(int myRow, int myCol) {
 		// add to this!
