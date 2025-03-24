@@ -21,8 +21,9 @@ void mohammad() {
 	mySystem.addParticle(c);
 	mySystem.addParticle(d);
 	mySystem.drawParticles();
-	mySystem.moveParticles();
+	//mySystem.moveParticles();
 	//usleep(1000000);
-	resetcolor();
-	clearscreen();
+	//resetcolor();
+	//clearscreen();
+	movecursor(55,1);
 }

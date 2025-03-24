@@ -3,6 +3,7 @@
 #include "ll.h"
 #include "particle.h"
 #include "particleSystem.h"
+#include "/public/colors.h"
 using namespace std;
 
 void test() {
@@ -10,10 +11,10 @@ void test() {
 	//Particle p(1, 1, 1, 1, 1, "test");
 	//mySystem.addParticle(p);
 	//cout << mySystem.numParticles() << endl;
-	cout << "This is where the different functions will be tested, pick a number to try things out\n(Note that the number 'associated' with each particle has nothing to do with the particles or the program at all,\nit is just there to show that the linked list of particles is working.)\n";
+	cout << "This is where the different functions will be tested, pick a number to try things out\n";
 	int choice = -1;
 	while (cin) {
-		cout << "0. Type '0' to quit\n1. Add a particle to the Particle System (will be added to the tail of the linked list)\n2. Print X and Y position of particle at head\n3. Print X and Y pos of particle at tail\n4. Print the X and Y positions of all the particles in the Particle System (linked list print)\n5. Print size of linked list / number of particles\n6. Print number of rows and columns on your screen\n";
+		cout << "0. Type '0' to quit\n1. Add a particle to the Particle System (will be added to the tail of the linked list)\n2. Print X and Y position of particle at head\n3. Print X and Y position of particle at tail\n4. Print the X and Y positions of all the particles in the Particle System (linked list print)\n5. Print size of linked list / number of particles\n6. Print number of rows and columns on your screen\n7. Draw all particles\n8. Make all particles move\n";
 		cin >> choice;
 		if (choice == 0) break;
 		else if (choice == 1) {
@@ -59,12 +60,12 @@ void test() {
 		else if (choice == 5) cout << "The number of particles in the system is: " << mySystem.numParticles() << endl;
 		else if (choice == 6) cout << "Rows: " << mySystem.get_rows() + 1 << endl << "Columns: " << mySystem.get_cols() + 1 << endl;
 		else if (choice == 7) {
-			particleGraphics g;
 			mySystem.drawParticles();
-			mySystem.moveParticles();
+			movecursor(mySystem.rows, 1);
 		}
+		else if (choice == 8) mySystem.moveParticles();
 		//else if (choice == 8) mySystem.physics();
 		else cout << "Invalid input, try again\n";
 	}
-	
+	show_cursor(true);
 }

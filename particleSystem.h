@@ -68,7 +68,7 @@ class ParticleSystem {
 	void moveParticles() {
 		//for (Cell* current = head;; current = current->next) {
 		while (size > 0) {
-			clearscreen();
+			//clearscreen();
 			Cell* current = head;
 			while (current) {
 				current->data.physics();
@@ -99,10 +99,12 @@ class ParticleSystem {
 			usleep(100000);
 
 		}
+		show_cursor(true);
 	}
 
 	void drawParticles() {
 		particleGraphics graphics;
+		show_cursor(false);
 		clearscreen();
 		for (Cell* current = head; current; current = current->next) {
 			double x = current->data.x;
