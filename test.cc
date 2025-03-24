@@ -58,10 +58,11 @@ void test() {
 		}
 		else if (choice == 5) cout << "The number of particles in the system is: " << mySystem.numParticles() << endl;
 		else if (choice == 6) cout << "Rows: " << mySystem.get_rows() + 1 << endl << "Columns: " << mySystem.get_cols() + 1 << endl;
-		/*else if (choice == 7) {
+		else if (choice == 7) {
 			particleGraphics g;
-			mySystem.drawParticles(g);
-		}*/
+			mySystem.drawParticles();
+			mySystem.moveParticles();
+		}
 		//else if (choice == 8) mySystem.physics();
 		else cout << "Invalid input, try again\n";
 	}

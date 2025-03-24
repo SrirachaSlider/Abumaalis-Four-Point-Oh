@@ -13,7 +13,7 @@ class ParticleSystem {
 	Cell *head = nullptr;
 	Cell *tail = nullptr; 
 	int size = 0;
-public:
+	public:
 	int rows = 0;
 	int cols = 0;
 	ParticleSystem() {
@@ -40,8 +40,8 @@ public:
 	int get_cols() {return cols;}
 
 	/*auto termSize = get_terminal_size();
-	int rows = size[0];
-	int cols = size[1];*/
+	  int rows = size[0];
+	  int cols = size[1];*/
 	int numParticles() {return size;}
 
 	void addParticle(Particle p) {
@@ -66,38 +66,52 @@ public:
 	}
 
 	void moveParticles() {
-		for (Cell* current = head; current; current = current->next) {
-			current->data.physics();
-			
-			if (current->data.lifetime <= 0) {
-				
-				Cell* temp = current;
+		//for (Cell* current = head;; current = current->next) {
+		while (size > 0) {
+			clearscreen();
+			Cell* current = head;
+			while (current) {
+				current->data.physics();
 
-				if (temp->prev)
-					temp->prev->next = temp->next;
-				if (temp->next)
-					temp->next->prev = temp->prev;
-				if (temp == head)
-					head = temp->next;
-				if (temp == tail)
-					tail = temp->prev;
+				if (current->data.lifetime <= 0) {
 
-				delete temp;
-				size--;
-			} else {
-				current = current->next;
+					Cell* temp = current;
+					current = current->next;
+
+					if (temp->prev)
+						temp->prev->next = temp->next;
+					if (temp->next)
+						temp->next->prev = temp->prev;
+					if (temp == head)
+						head = temp->next;
+					if (temp == tail)
+						tail = temp->prev;
+
+					delete temp;
+					size--;
+				} else {
+					current = current->next;
+				}
+				if (size == 0) break;
 			}
+			
+			drawParticles();
+			usleep(100000);
+
 		}
 	}
 
 	void drawParticles() {
 		particleGraphics graphics;
+		clearscreen();
 		for (Cell* current = head; current; current = current->next) {
 			double x = current->data.positionX;
 			double y = current->data.positionY;
 
-			if (x >= 0 and x < cols and y >= 0 and y < rows)
+			if (x >= 0 and x < cols and y >= 0 and y < rows) {
 				graphics.drawPoint(y, x);
+				//resetcolor();
+			}
 		}
 	}
 
@@ -131,6 +145,6 @@ public:
 			break;
 		}
 	}
-	
 
-};
+
+	};
