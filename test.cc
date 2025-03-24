@@ -49,8 +49,8 @@ void test() {
 				int counter = 0;
 				for (Cell* temp = mySystem.get_head(); temp != nullptr; temp = temp->next) {
 					cout << "Particle " << counter << ":\n";
-					cout << "X pos: " << temp->get_data().positionX << endl;
-					cout << "Y pos: " << temp->get_data().positionY << endl;
+					cout << "X pos: " << temp->get_data().positionX;
+					cout << ", Y pos: " << temp->get_data().positionY << endl;
 					counter++;
 				}
 			}
