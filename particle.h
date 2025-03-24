@@ -12,7 +12,7 @@ using namespace std;
 
 class Particle {
 	public:
-		int x, y; // for positions
+		int x, y, rows = 0, cols = 0; // for positions
 		double dx, dy; // for velocities
 		int lifetime;
 		bool apply_gravity;
@@ -23,9 +23,9 @@ class Particle {
 							 // Constructor
 		Particle(int start_x, int start_y, double vx, double vy, int life, bool gravity = true)
 			:x(start_x), y(start_y), dx(vx), dy(vy), lifetime(life), apply_gravity(gravity) {
-				auto [rows, cols] = get_terminal_size();
-				rows--;
-				cols--;
+				const auto [myRows, myCols] = get_terminal_size();
+				rows = myRows - 1;
+				cols = myCols - 1;
 			}
 		// To set movement type
 
@@ -49,16 +49,16 @@ class Particle {
 				x = 0;
 				dx = -dx;
 			}
-			if (x >= screen_width){
-				x = screen_width -1;
-				dx = -dx;
+			if (x >= cols){
+				x = cols - (x-cols);
+				dx *= -1;
 			}
 			if (y < 0){
 				y = 0;
-				dy = -dy;
+				dy *= -1;
 			}
-			if (y >= screen_height){
-				y = screen_height -1;
+			if (y >= rows){
+				y = rows - (y - rows);
 				dy = -dy;
 			}
 			// firework gravity

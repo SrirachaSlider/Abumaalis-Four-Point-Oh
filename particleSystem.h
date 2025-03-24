@@ -105,8 +105,8 @@ class ParticleSystem {
 		particleGraphics graphics;
 		clearscreen();
 		for (Cell* current = head; current; current = current->next) {
-			double x = current->data.positionX;
-			double y = current->data.positionY;
+			double x = current->data.x;
+			double y = current->data.y;
 
 			if (x >= 0 and x < cols and y >= 0 and y < rows) {
 				graphics.drawPoint(y, x);

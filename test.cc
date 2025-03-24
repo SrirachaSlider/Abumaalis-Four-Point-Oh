@@ -31,15 +31,15 @@ void test() {
 		}
 		else if (choice == 2) {
 			if (mySystem.get_head() != nullptr) {
-				cout << "Particle at head's X pos: " << mySystem.get_head()->get_data().positionX << endl;
-				cout << "Particle at head's Y pos: " << mySystem.get_head()->get_data().positionY << endl;
+				cout << "Particle at head's X pos: " << mySystem.get_head()->get_data().x << endl;
+				cout << "Particle at head's Y pos: " << mySystem.get_head()->get_data().y << endl;
 			}
 			else cout << "Nothing to print\n";
 		}
 		else if (choice == 3) {
 			if (mySystem.get_tail() != nullptr) {
-				cout << "Particle at tail's X pos: " << mySystem.get_tail()->get_data().positionX << endl;
-				cout << "Particle at tail's Y pos: " << mySystem.get_tail()->get_data().positionY << endl;
+				cout << "Particle at tail's X pos: " << mySystem.get_tail()->get_data().x << endl;
+				cout << "Particle at tail's Y pos: " << mySystem.get_tail()->get_data().y << endl;
 			}
 			else cout << "Nothing to print\n";
 		}
@@ -49,8 +49,8 @@ void test() {
 				int counter = 0;
 				for (Cell* temp = mySystem.get_head(); temp != nullptr; temp = temp->next) {
 					cout << "Particle " << counter << ":\n";
-					cout << "X pos: " << temp->get_data().positionX;
-					cout << ", Y pos: " << temp->get_data().positionY << endl;
+					cout << "X pos: " << temp->get_data().x;
+					cout << ", Y pos: " << temp->get_data().y << endl;
 					counter++;
 				}
 			}
