@@ -41,9 +41,9 @@ class particleGraphics {
 		resetcolor();
 		setbgcolor(r,g,b);
 		for (int row = x_one; row <= x_two; row++) {
-			for (int col = y_one; row <= y_two; col++) {
+			for (int col = y_one; col <= y_two; col++) {
 				movecursor(row,col);
-				cout << " ";
+				cout << " ";          
 				}
 			}
 		cout.flush();
