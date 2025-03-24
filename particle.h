@@ -15,14 +15,14 @@ class Particle {
 		int x, y, rows = 0, cols = 0; // for positions
 		double dx, dy; // for velocities
 		int lifetime;
-		bool apply_gravity;
+		string type;
 		bool make_firework = false;
-		static int screen_width, screen_height; // Store screen size
+		//static int screen_width, screen_height; // Store screen size
 
 		//string MovementType; // STREAMER , BALLISTIC, FIREWORK
 							 // Constructor
-		Particle(int start_x, int start_y, double vx, double vy, int life, bool gravity = true)
-			:x(start_x), y(start_y), dx(vx), dy(vy), lifetime(life), apply_gravity(gravity) {
+		Particle(int start_x, int start_y, double vx, double vy, int life, string myType = "none")
+			:x(start_x), y(start_y), dx(vx), dy(vy), lifetime(life), type(myType) {
 				const auto [myRows, myCols] = get_terminal_size();
 				rows = myRows - 1;
 				cols = myCols - 1;
@@ -39,6 +39,13 @@ class Particle {
 		}*/
 
 		void physics(){
+			
+			if (type == "streamer" or type == "STREAMER") {
+                if (dx >= dy) dy = 0;
+                else dx = 0;
+            }
+            if (type == "ballistic" or type == "BALLISTIC") dy += 1;
+            if (type == "firework" or type == "FIREWORK") make_firework = true;
 
 			// Basic physics logic
 			x += dx;
@@ -62,9 +69,10 @@ class Particle {
 				dy = -dy;
 			}
 			// firework gravity
-			if (apply_gravity) dy += 1.0;
+			//if (apply_gravity) dy += 1.0;
 
 			//decrement lifetime
+
 			lifetime--;
 		}
 	
@@ -72,13 +80,13 @@ class Particle {
 			return lifetime > 0;
 		}
 
-		void explode() const{
-			for (int i = 0; i < 360; i+= 90){ //creating 4 particles
+		void explode(int i) const{
+			//for (int i = 0; i < 360; i+= 90){ //creating 4 particles
 			double angle = i * M_PI/ 180.0; // convert degree to radian
 			double vx = cos(angle) * 2.0; //explode speed
 			double vy = sin(angle) * 2.0; 
 			//new_particles.push_back(Particle(x,y,vx,vy,30,false)); // streamer particle
 
-		}
+		//}
 }
 };
