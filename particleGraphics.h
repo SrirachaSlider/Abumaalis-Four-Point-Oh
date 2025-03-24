@@ -13,6 +13,7 @@ class particleGraphics {
 
 	public:
 		particleGraphics(){
+		srand(time(0));
 		r = rand() % 255;
 		g = rand() % 255;
 		b = rand() % 255;
@@ -27,13 +28,14 @@ class particleGraphics {
 			return color;
 		}*/
 		void drawPoint(int myRow, int myCol) {
-		resetcolor();
+		//resetcolor();
 		movecursor(myRow,myCol);
 		setbgcolor(r,g,b);
 		//setcolor(255,0,0);
-		clearscreen();
+		//clearscreen();
 		cout << " ";
 		cout.flush();
+		resetcolor();
 		}
 		void drawRectangle(int x_one, int x_two, int y_one, int y_two) {
 		assert(x_one < x_two);

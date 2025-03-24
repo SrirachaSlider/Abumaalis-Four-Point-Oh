@@ -13,7 +13,7 @@ class ParticleSystem {
 	Cell *head = nullptr;
 	Cell *tail = nullptr; 
 	int size = 0;
-public:
+	public:
 	int rows = 0;
 	int cols = 0;
 	ParticleSystem() {
@@ -40,8 +40,8 @@ public:
 	int get_cols() {return cols;}
 
 	/*auto termSize = get_terminal_size();
-	int rows = size[0];
-	int cols = size[1];*/
+	  int rows = size[0];
+	  int cols = size[1];*/
 	int numParticles() {return size;}
 
 	void addParticle(Particle p) {
@@ -66,47 +66,87 @@ public:
 	}
 
 	void moveParticles() {
-		for (Cell* current = head; current; current = current->next) {
-			current->data.physics();
-			
-			if (current->data.positionX < 0 or current->data.positionX >= cols or
-				current->data.positionY < 0 or current->data.positionY >= rows or
-				current->data.lifetime <= 0) {
-				
-				Cell* temp = current;
+		//for (Cell* current = head;; current = current->next) {
+		while (size > 0) {
+			//clearscreen();
+			Cell* current = head;
+			while (current) {
+				current->data.physics();
 
-				if (temp->prev)
-					temp->prev->next = temp->next;
-				if (temp->next)
-					temp->next->prev = temp->prev;
-				if (temp == head)
-					head = temp->next;
-				if (temp == tail)
-					tail = temp->prev;
+				if (current->data.lifetime <= 0) {
 
-				delete temp;
-				size--;
-			} else {
-				current = current->next;
+					Cell* temp = current;
+					current = current->next;
+
+					if (temp->prev)
+						temp->prev->next = temp->next;
+					if (temp->next)
+						temp->next->prev = temp->prev;
+					if (temp == head)
+						head = temp->next;
+					if (temp == tail)
+						tail = temp->prev;
+
+					delete temp;
+					size--;
+				} else {
+					current = current->next;
+				}
+				if (size == 0) break;
 			}
+			
+			drawParticles();
+			usleep(100000);
+
 		}
+		show_cursor(true);
 	}
 
 	void drawParticles() {
 		particleGraphics graphics;
+		show_cursor(false);
+		clearscreen();
 		for (Cell* current = head; current; current = current->next) {
-			double x = current->data.positionX;
-			double y = current->data.positionY;
+			double x = current->data.x;
+			double y = current->data.y;
 
-			if (x >= 0 and x < cols and y >= 0 and y < rows)
+			if (x >= 0 and x < cols and y >= 0 and y < rows) {
 				graphics.drawPoint(y, x);
+				//resetcolor();
+			}
 		}
 	}
 
-	void drawShape() {
-		//stub for now, this is for drawing shapes like rectangle of a window
-		return;
-	}
-	
+	void drawShape() { // Need to add invalid input checks
+		particleGraphics g;
+		int choice;
+		while (true) {
+			cout << "Enter a number to draw a shape:\n";
+			cout << "1. Rectangle\n2. Vertical line\n3. Horizontal line\n";
+			cin >> choice;
 
-};
+			if (choice < 1 or choice > 3) {
+				cout << "Invalid choice. Please enter 1, 2, or 3\n";
+				continue;
+			} else if (choice == 1) {
+				int x_one, x_two, y_one, y_two;
+				cout << "Enter coordinates for the square in this order: x1 y1 x2 y2:\n";
+				cin >> x_one >> y_one >> x_two >> y_two;
+				g.drawRectangle(x_one, x_two, y_one, y_two);
+			} else if (choice == 2) {
+				int y_one, y_two, x;
+				cout << "Enter coordinates for the vertical line in this order: y1 y2 x:\n";
+				cin >> y_one >> y_two >> x;
+				g.drawVertLine(y_one, y_two, x);
+			} else if (choice == 3) {
+				int x_one, x_two, y;
+				cout << "Enter coordinates for the horizontal line in this order: x1 x2 y:\n";
+				cin >> x_one >> x_two >> y;
+				g.drawHorizLine(x_one, x_two, y);
+			}
+			break;
+		}
+	}
+
+
+	};
