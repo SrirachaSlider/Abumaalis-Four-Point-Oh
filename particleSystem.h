@@ -69,9 +69,7 @@ public:
 		for (Cell* current = head; current; current = current->next) {
 			current->data.physics();
 			
-			if (current->data.positionX < 0 or current->data.positionX >= cols or
-				current->data.positionY < 0 or current->data.positionY >= rows or
-				current->data.lifetime <= 0) {
+			if (current->data.lifetime <= 0) {
 				
 				Cell* temp = current;
 
@@ -103,9 +101,35 @@ public:
 		}
 	}
 
-	void drawShape() {
-		//stub for now, this is for drawing shapes like rectangle of a window
-		return;
+	void drawShape() { // Need to add invalid input checks
+		particleGraphics g;
+		int choice;
+		while (true) {
+			cout << "Enter a number to draw a shape:\n";
+			cout << "1. Rectangle\n2. Vertical line\n3. Horizontal line\n";
+			cin >> choice;
+
+			if (choice < 1 or choice > 3) {
+				cout << "Invalid choice. Please enter 1, 2, or 3\n";
+				continue;
+			} else if (choice == 1) {
+				int x_one, x_two, y_one, y_two;
+				cout << "Enter coordinates for the square in this order: x1 y1 x2 y2:\n";
+				cin >> x_one >> y_one >> x_two >> y_two;
+				g.drawRectangle(x_one, x_two, y_one, y_two);
+			} else if (choice == 2) {
+				int y_one, y_two, x;
+				cout << "Enter coordinates for the vertical line in this order: y1 y2 x:\n";
+				cin >> y_one >> y_two >> x;
+				g.drawVertLine(y_one, y_two, x);
+			} else if (choice == 3) {
+				int x_one, x_two, y;
+				cout << "Enter coordinates for the horizontal line in this order: x1 x2 y:\n";
+				cin >> x_one >> x_two >> y;
+				g.drawHorizLine(x_one, x_two, y);
+			}
+			break;
+		}
 	}
 	
 
