@@ -40,12 +40,12 @@ class Particle {
 
 		void physics(){
 			
-			if (type == "streamer" or type == "STREAMER") {
+			if (type == "streamer" or type == "STREAMER" or type == "Streamer") {
                 if (dx >= dy) dy = 0;
                 else dx = 0;
             }
-            if (type == "ballistic" or type == "BALLISTIC") dy += 1;
-            if (type == "firework" or type == "FIREWORK") make_firework = true;
+            if (type == "ballistic" or type == "BALLISTIC" or type == "Ballistic") dy += 1;
+            if (type == "firework" or type == "FIREWORK" or type == "Firework") make_firework = true;
 
 			// Basic physics logic
 			x += dx;

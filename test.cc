@@ -30,7 +30,7 @@ void test() {
 			cin >> lifeTime;
 			cout << "Type: ";
 			cin >> type;
-			Particle p(x, y, xv, yv, lifeTime);
+			Particle p(x, y, xv, yv, lifeTime, type);
 			mySystem.addParticle(p);
 			cout << "Particle added" << endl;
 		}
