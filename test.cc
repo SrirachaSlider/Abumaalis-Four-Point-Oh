@@ -4,6 +4,7 @@
 #include "particle.h"
 #include "particleSystem.h"
 #include "/public/colors.h"
+#include <string>
 using namespace std;
 
 void test() {
@@ -18,14 +19,17 @@ void test() {
 		cin >> choice;
 		if (choice == 0) break;
 		else if (choice == 1) {
-			cout << "Insert numbers for the X and Y position, the X and Y velocity, and the lifetime for the particle you are adding (will be added to the tail of linked list)\n";
+			cout << "Insert numbers for the X and Y position, the X and Y velocity, and the lifetime for the particle you are adding (will be added to tail of linked list)\nAlso insert the type you want your particle to be (Streamer, Ballistic, or Firework), if you want the particle to behave based on your velocity inputs, just insert anything else for type\n";
 			int x = 0, y = 0, xv = 0, yv = 0, lifeTime = 0;
+			string type = "none";
 			cout << "X and Y position: ";
 			cin >> x >> y;
 			cout << "X and Y Velocity: ";
 			cin >> xv >> yv;
 			cout << "Lifetime: ";
 			cin >> lifeTime;
+			cout << "Type: ";
+			cin >> type;
 			Particle p(x, y, xv, yv, lifeTime);
 			mySystem.addParticle(p);
 			cout << "Particle added" << endl;
@@ -63,7 +67,10 @@ void test() {
 			mySystem.drawParticles();
 			movecursor(mySystem.rows, 1);
 		}
-		else if (choice == 8) mySystem.moveParticles();
+		else if (choice == 8) {
+			mySystem.moveParticles();
+			movecursor(mySystem.rows, 1);
+		}
 		//else if (choice == 8) mySystem.physics();
 		else cout << "Invalid input, try again\n";
 	}
