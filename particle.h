@@ -80,7 +80,7 @@ class Particle {
 			return lifetime > 0;
 		}
 
-		void explode(int i) const{
+		Particle explode(int i) const{
 			//for (int i = 0; i < 360; i+= 90){ //creating 4 particles
 			double angle = i * M_PI/ 180.0; // convert degree to radian
 			double vx = cos(angle) * 2.0; //explode speed
@@ -88,5 +88,6 @@ class Particle {
 			//new_particles.push_back(Particle(x,y,vx,vy,30,false)); // streamer particle
 
 		//}
-}
+			return Particle(x, y, vx, vy, 30, "streamer");
+		}
 };

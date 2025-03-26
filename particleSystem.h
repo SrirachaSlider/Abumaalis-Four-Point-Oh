@@ -75,6 +75,9 @@ class ParticleSystem {
 
 				if (current->data.lifetime <= 0) {
 
+					if (current->data.make_firework)
+						createFirework(current->data);
+
 					Cell* temp = current;
 					current = current->next;
 
@@ -148,5 +151,10 @@ class ParticleSystem {
 		}
 	}
 
+	void createFirework(Particle& p) {
+		for (int i = 0; i < 360; i += 45) {
+			addParticle(p.explode(i));
+		}
+	}
 
 	};
