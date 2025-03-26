@@ -83,7 +83,7 @@ class particleGraphics {
 				swap (x_one, y_one);
 				swap (x_two, y_two);
 			}
-			if (x_one > x_two) {
+			else if (x_one > x_two) {
 				swap (x_one, y_two);
 				swap (y_one, x_two);
 			}
