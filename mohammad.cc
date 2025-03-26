@@ -43,7 +43,8 @@ void mohammad() {
 		}
 		if (choice == 3) {
 			mySystem.moveParticles();
-			movecursor(mySystem.rows, 1);
+			clearscreen();
+			movecursor(1, 1);
 		}
 	}
 
