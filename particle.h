@@ -21,7 +21,7 @@ class Particle {
 
 		//string MovementType; // STREAMER , BALLISTIC, FIREWORK
 		// Constructor
-		Particle(int start_x, int start_y, double vx, double vy, int life, string myType = "none")
+		Particle(int start_x = 0, int start_y = 0, double vx = 0, double vy = 0, int life = 0, string myType = "none")
 			:x(start_x), y(start_y), dx(vx), dy(vy), lifetime(life), type(myType) {
 				const auto [myRows, myCols] = get_terminal_size();
 				rows = myRows - 1;

@@ -78,8 +78,10 @@ class ParticleSystem {
 					Cell* temp = current;
 					current = current->next;
 
-					if (temp->data.make_firework)
-						createFirework(temp->data);
+					//if (temp->data.make_firework)
+					//	createFirework(temp->data);
+
+					Particle fireParticle = temp->data;
 
 					if (temp->prev)
 						temp->prev->next = temp->next;
@@ -92,7 +94,10 @@ class ParticleSystem {
 
 					delete temp;
 					size--;
-				} else {
+
+					if (fireParticle.make_firework) createFirework(fireParticle);
+				} 
+				else {
 					current = current->next;
 				}
 				if (size == 0) break;
@@ -125,29 +130,44 @@ class ParticleSystem {
 		int choice;
 		while (true) {
 			cout << "Enter a number to draw a shape:\n";
-			cout << "1. Rectangle\n2. Vertical line\n3. Horizontal line\n";
+			cout << "0. Quit\n1. Rectangle\n2. Line\n";
 			cin >> choice;
 
-			if (choice < 1 or choice > 3) {
-				cout << "Invalid choice. Please enter 1, 2, or 3\n";
+			if (choice < 0 or choice > 2) {
+				cout << "Invalid choice. Please enter 0, 1, or 2\n";
 				continue;
-			} else if (choice == 1) {
-				int x_one, x_two, y_one, y_two;
-				cout << "Enter coordinates for the square in this order: x1 y1 x2 y2:\n";
-				cin >> x_one >> y_one >> x_two >> y_two;
-				g.drawRectangle(x_one, x_two, y_one, y_two);
-			} else if (choice == 2) {
-				int y_one, y_two, x;
-				cout << "Enter coordinates for the vertical line in this order: y1 y2 x:\n";
-				cin >> y_one >> y_two >> x;
-				g.drawVertLine(y_one, y_two, x);
-			} else if (choice == 3) {
-				int x_one, x_two, y;
-				cout << "Enter coordinates for the horizontal line in this order: x1 x2 y:\n";
-				cin >> x_one >> x_two >> y;
-				g.drawHorizLine(x_one, x_two, y);
 			}
-			break;
+			else if (choice == 0) break;
+			else if (choice == 1) {
+				int x_one, x_two, y_one, y_two;
+				cout << "Enter coordinates for the square in this order: x1, x2, y1, y2:\n";
+				cout << "Max X: " << ((cols+1)/2) << ", Max Y: " << rows << endl;
+				cin >> x_one >> x_two >> y_one >> y_two;
+				if (x_one > ((cols+1)/2) or x_two > ((cols+1)/2) or x_one < 0 or x_two < 0 or y_one > rows or y_two > rows or y_one < 0 or y_two < 0) {
+					cout << "Out of bounds, try again!\n";
+					continue;
+				}
+				g.drawRectangle(x_one, x_two, y_one, y_two);
+			} 
+			/*else if (choice == 2) {
+			  int y_one, y_two, x;
+			  cout << "Enter coordinates for the vertical line in this order: y1 y2 x:\n";
+			  cin >> y_one >> y_two >> x;
+			  g.drawVertLine(y_one, y_two, x);
+			  } 
+			  else if (choice == 3) {
+			  int x_one, x_two, y;
+			  cout << "Enter coordinates for the horizontal line in this order: x1 x2 y:\n";
+			  cin >> x_one >> x_two >> y;
+			  g.drawHorizLine(x_one, x_two, y);
+			  }*/
+			else if (choice == 2) {
+				cout << "Enter coordinates in this order: x1, x2, y1, y2\n";
+				int x1, x2, y1, y2;
+				cin >> x1 >> x2 >> y1 >> y2;
+				g.drawLine(x1, x2, y1, y2);
+
+			}
 		}
 	}
 
